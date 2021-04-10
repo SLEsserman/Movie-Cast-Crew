@@ -5,9 +5,16 @@ ia = imdb.IMDb()
 #Prompts user to type in movie.
 name = input('Type in the movie you want to search: ')
 #This line takes the input and searches the IMDb search system for it.
+
+# I would add a try block here to catch if the user inputs a bad value
+# depending if the api supports it you could look for similarly spelled movies
+# maybe there's good open source regex searching capabilities here?
+
 search = ia.search_movie(name)
 #This takes the first result of the search and makes it the object.
-#So be sure to type whatever movie right.
+#So be sure to type whatever movie right.  <-- adressing this concern
+
+
 id = search[0].getID()
 #Basically just takes that first search result and makes it an object.
 movie = ia.get_movie(id)
@@ -18,7 +25,7 @@ movie2list = []
 #Helps to be sure.
 title = movie ['title']
 year = movie['year']
-print(str(title) + ' - ' + str(year))
+print(str(title) + ' - ' + str(year)).   
 
 #Lines 23-33 takes the 'name' attribute from all 'Person' objects in the 1st movie.
 for key, data in movie.items():
